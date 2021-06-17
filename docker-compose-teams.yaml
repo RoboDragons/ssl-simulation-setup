@@ -165,6 +165,43 @@ services:
       - match
       - guacamole
 
+  team-robodragons-a:
+    build: 
+      context: ./robodragons
+    user: "1000"
+    restart: unless-stopped
+    mem_limit: "${TEAM_LIMIT_MEM}"
+    cpus: "${TEAM_LIMIT_CPU}"
+    environment:
+      SSH_PUBLIC_KEY:
+      VNC_PW:
+    volumes:
+      - team-robodragons-a-data:/home/default:rw
+    ports:
+      - 5901/tcp
+      - 2222/tcp
+    networks:
+      - match
+      - guacamole
+  team-robodragons-b:
+    build: 
+      context: ./robodragons
+    user: "1000"
+    restart: unless-stopped
+    mem_limit: "${TEAM_LIMIT_MEM}"
+    cpus: "${TEAM_LIMIT_CPU}"
+    environment:
+      SSH_PUBLIC_KEY:
+      VNC_PW:
+    volumes:
+      - team-robodragons-b-data:/home/default:rw
+    ports:
+      - 5901/tcp
+      - 2222/tcp
+    networks:
+      - match
+      - guacamole
+
 volumes:
   team-tigers-data:
   team-erforce-data:
@@ -175,6 +212,8 @@ volumes:
   team-uroborus-data:
   team-roboime-data:
   team-robodragons-data:
+  team-robodragons-a-data:
+  team-robodragons-b-data:
 
 networks:
   match:
