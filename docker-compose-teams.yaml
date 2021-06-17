@@ -147,7 +147,8 @@ services:
       - guacamole
 
   team-robodragons:
-    image: sslrobodragons/robodragons-system:ubuntu20.04-robocup2021-simulation
+    build: 
+      context: ./robodragons
     user: "1000"
     restart: unless-stopped
     mem_limit: "${TEAM_LIMIT_MEM}"
