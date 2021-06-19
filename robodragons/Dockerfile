@@ -14,6 +14,7 @@ RUN apt update && apt install -y \
     emacs \
     vim \
     iputils-ping \
-    net-tools 
+    net-tools \
+    dnsutils
 
 USER default
